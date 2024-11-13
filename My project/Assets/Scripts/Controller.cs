@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,6 @@ public class Controller : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.forward * runningSpeed * Time.deltaTime;
-
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
