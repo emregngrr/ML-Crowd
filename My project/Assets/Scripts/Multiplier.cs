@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 public class Multiplier : MonoBehaviour
 {
-    public int characterCount = 1; 
-    public float minRandomValue = 2; 
-    public float maxRandomValue = 3; 
+    public int characterCount = 1;
+    public float minRandomValue = 2;
+    public float maxRandomValue = 3;
     public CrowdController crowdController;
 
     private int randomValue;
     private bool isMultiply;
     private bool isPlus;
     private int counter;
+
     void Start()
     {
         randomValue = Random.Range((int)minRandomValue, (int)maxRandomValue + 1);
@@ -27,29 +27,27 @@ public class Multiplier : MonoBehaviour
         }
         Debug.Log("Random Sayi=" + randomValue);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         counter = 0;
-            if (isMultiply)
+        if (isMultiply)
+        {
+            while (counter < randomValue)
             {
-                // Çarpma iþlemi
-                while(counter < randomValue)
-                {
-                    crowdController.AddClone();
-                    counter++;
-                }
+                crowdController.AddClone();
+                counter++;
             }
-            else if(isPlus)
+        }
+        else if (isPlus)
+        {
+            while (counter < randomValue)
             {
-                // Toplama iþlemi
-                while(counter < randomValue) 
-                {
-                    crowdController.AddClone();
-                    counter++;
-                }
-                
-                isPlus = false;
+                crowdController.AddClone();
+                counter++;
             }
-        
+
+            isPlus = false;
+        }
     }
 }

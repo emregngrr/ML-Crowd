@@ -163,8 +163,6 @@ MonoBehaviour:
   SteerSpeed: 180
   CloneSpeed: 5
   Gap: 10
-  objectPool: {fileID: 5354920401020167373, guid: 6e4fe5f2b51e884498a7ee48bb70cfc5,
-    type: 3}
 --- !u!54 &5699638235677810269
 Rigidbody:
   m_ObjectHideFlags: 0
