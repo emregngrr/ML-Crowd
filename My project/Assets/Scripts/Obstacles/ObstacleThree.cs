@@ -1,20 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleThree : MonoBehaviour
 {
-    public Transform handle;           // Handle nesnesi referansý
-    public Transform punch;            // Punch nesnesi referansý
-    public float punchDistance = 2f;   // Punch objesinin ileri geri hareket mesafesi
-    public float punchSpeed = 5f;      // Punch objesinin hareket hýzý
-    public float punchDelay = 3f;      // Yumruk hareketleri arasýndaki gecikme süresi (saniye)
-    public float handleScaleFactor = 1.5f; // Handle nesnesinin uzama oraný
+    public Transform handle;           
+    public Transform punch;            
+    public float punchDistance = 2f;   
+    public float punchSpeed = 5f;      
+    public float punchDelay = 3f;      
+    public float handleScaleFactor = 1.5f; 
 
     private Vector3 initialPunchPosition;
     private Vector3 initialHandleScale;
     private Vector3 targetHandleScale;
 
-    private bool isPunching = false; // Punch iþlemi durumu
+    private bool isPunching = false; 
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class ObstacleThree : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Handle veya Punch referansý eksik!");
+            Debug.LogError("Referanslar eksik!");
         }
     }
 
@@ -35,32 +36,27 @@ public class ObstacleThree : MonoBehaviour
     {
         while (true)
         {
-            // Gecikme süresi kadar bekle
             yield return new WaitForSeconds(punchDelay);
 
-            // Punch ileri hareketi ve handle uzama
             Vector3 targetPunchPosition = initialPunchPosition + Vector3.right * punchDistance;
-            float t = 0f;  // Zaman deðiþkeni
+            float t = 0f;  
 
-            // Handle'ýn X ekseninde uzamasý
             while (Vector3.Distance(punch.localPosition, targetPunchPosition) > 0.01f)
             {
                 punch.localPosition = Vector3.MoveTowards(punch.localPosition, targetPunchPosition, punchSpeed * Time.deltaTime);
                 t += Time.deltaTime * punchSpeed;
-                handle.localScale = Vector3.Lerp(initialHandleScale, targetHandleScale, t); // Handle'ýn boyutu artar
+                handle.localScale = Vector3.Lerp(initialHandleScale, targetHandleScale, t); 
                 yield return null;
             }
 
-            // Bir süre bekle (yumruk ileri pozisyonda kalsýn)
             yield return new WaitForSeconds(0.2f);
 
-            // Punch geri hareketi ve handle eski ölçeðe dönme
-            t = 0f;  // Zaman deðiþkenini sýfýrla
+            t = 0f;  
             while (Vector3.Distance(punch.localPosition, initialPunchPosition) > 0.01f)
             {
                 punch.localPosition = Vector3.MoveTowards(punch.localPosition, initialPunchPosition, punchSpeed * Time.deltaTime);
                 t += Time.deltaTime * punchSpeed;
-                handle.localScale = Vector3.Lerp(targetHandleScale, initialHandleScale, t); // Handle eski haline geri döner
+                handle.localScale = Vector3.Lerp(targetHandleScale, initialHandleScale, t); 
                 yield return null;
             }
         }

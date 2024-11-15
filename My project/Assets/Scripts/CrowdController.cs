@@ -8,27 +8,26 @@ public class CrowdController : MonoBehaviour
     public float CloneSpeed = 5;
     public int Gap = 10;
 
-    public GameObject BodyPrefab;
+    public ObjectPool objectPool;
 
     private List<GameObject> Clones = new List<GameObject>();
     private List<Vector3> PositionsHistory = new List<Vector3>();
 
-    void Start()
+    void Awake()
     {
-        AddClone();
-        AddClone();
-        AddClone();
-        AddClone();
-        AddClone();
-        AddClone();
-        AddClone();
-        AddClone();
-        AddClone();
-        AddClone();
+        if (objectPool == null)
+        {
+            Debug.LogError("ObjectPool is not assigned!");
+        }
+        else
+        {
+            Debug.Log("CrowdController initialized.");
+        }
     }
 
     void Update()
     {
+
         transform.position += Vector3.forward * MoveSpeed * Time.deltaTime;
 
         PositionsHistory.Insert(0, transform.position);
@@ -57,20 +56,42 @@ public class CrowdController : MonoBehaviour
                     moveDirection = point - clone.transform.position;
                     break;
             }
-            
-            clone.transform.position += moveDirection * CloneSpeed * Time.deltaTime;
 
-            // Rotate body towards the point along the path
-            //clone.transform.LookAt(point);
+            clone.transform.position += moveDirection * CloneSpeed * Time.deltaTime;
             clone.transform.rotation = Quaternion.identity;
 
             index++;
         }
     }
 
-    private void AddClone()
+    public void AddClone()
     {
-        GameObject clone = Instantiate(BodyPrefab, new Vector3(0,0,-2),Quaternion.identity);
-        Clones.Add(clone);
+        int a = objectPool.poolQueue.Count;
+        Debug.Log("PoolSize******=" + a);
+
+        GameObject clone = objectPool.GetObject();
+
+        if (clone != null) 
+        {
+            clone.transform.position = transform.position;
+            clone.transform.rotation = Quaternion.identity;
+            clone.SetActive(true);
+
+            if (!Clones.Contains(clone)) 
+            {
+                Clones.Add(clone);
+                Debug.Log("Clone added. Current count: " + Clones.Count);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No available objects in the pool!");
+        }
+    }
+
+    public void RemoveClone(GameObject clone)
+    {
+        Clones.Remove(clone);
+        objectPool.ReturnObject(clone); 
     }
 }

@@ -15,7 +15,7 @@ public class ObstacleTwo : MonoBehaviour
 
     void Start()
     {
-        // Save the starting position to calculate the movement range
+        
         startPosition = transform.position;
     }
     void Update()
@@ -27,11 +27,10 @@ public class ObstacleTwo : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= moveDelay)
             {
-                canMove = true; // Gecikme süresi tamamlandýðýnda hareket etmeye baþla
+                canMove = true;
             }
         }
 
-        // Eðer hareket etme izni varsa saða sola hareket ettir
         if (canMove)
         {
             float offset = Mathf.PingPong((Time.time - moveDelay) * moveSpeed, moveDistance);

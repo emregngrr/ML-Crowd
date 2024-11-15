@@ -7,13 +7,13 @@ public class Controller : MonoBehaviour
 {
     public float sideMoveSpeed = 5f;
     public float runningSpeed = 5f;
-    private Vector3 previousPosition; // Önceki pozisyonu saklamak için deðiþken
-    private Animator animator; // Animator bileþeni
+    private Vector3 previousPosition;
+    private Animator animator;
 
     void Start()
     {
         previousPosition = transform.position;
-        animator = GetComponent<Animator>(); // Animator bileþenini al
+        animator = GetComponent<Animator>(); 
     }
 
     void Update()
@@ -30,7 +30,6 @@ public class Controller : MonoBehaviour
                 Vector3 targetPosition = new Vector3(touchPosition.x, transform.position.y, transform.position.z);
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, sideMoveSpeed * Time.deltaTime);
 
-                // Hareket yönünü kontrol et
                 if (transform.position.x > previousPosition.x)
                 {
                     animator.SetBool("isMovingRight", true);
@@ -47,7 +46,7 @@ public class Controller : MonoBehaviour
                     animator.SetBool("isMovingLeft", false);
                 }
 
-                // Þimdiki pozisyonu önceki pozisyon olarak kaydediyoruz
+                
                 previousPosition = transform.position;
             }
         }
