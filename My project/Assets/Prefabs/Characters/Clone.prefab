@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sideMoveSpeed: 5
   runningSpeed: 5
+  jumpForce: 10
 --- !u!54 &3774883260447599295
 Rigidbody:
   m_ObjectHideFlags: 0

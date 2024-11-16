@@ -156,6 +156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spin blade
       objectReference: {fileID: 0}
+    - target: {fileID: 3740652380937166069, guid: 8b57bc9c835784a5c9d30686ddb7c80c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4081008007210255951, guid: 8b57bc9c835784a5c9d30686ddb7c80c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -254,6 +259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 150
+  moveSpeed: 10
+  moveDistance: 10
+  moveDelay: 2
 --- !u!4 &7630981582663411015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4081008007210255951, guid: 8b57bc9c835784a5c9d30686ddb7c80c,

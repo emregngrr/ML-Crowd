@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainChar
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 664e6998ef92f4f468a6439ccee9e128,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 664e6998ef92f4f468a6439ccee9e128,
         type: 3}
       propertyPath: m_Avatar
@@ -124,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sideMoveSpeed: 5
   runningSpeed: 5
+  jumpForce: 10
 --- !u!136 &5856259685313946008
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -163,6 +169,8 @@ MonoBehaviour:
   SteerSpeed: 180
   CloneSpeed: 5
   Gap: 10
+  objectPrefab: {fileID: 0}
+  poolSize: 30
 --- !u!54 &5699638235677810269
 Rigidbody:
   m_ObjectHideFlags: 0

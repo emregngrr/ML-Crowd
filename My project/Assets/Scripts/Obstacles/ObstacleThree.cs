@@ -21,8 +21,8 @@ public class ObstacleThree : MonoBehaviour
     {
         if (handle != null && punch != null)
         {
-            initialPunchPosition = punch.localPosition;  // Punch baþlangýç pozisyonunu kaydet
-            initialHandleScale = handle.localScale;      // Handle baþlangýç ölçeðini kaydet
+            initialPunchPosition = punch.localPosition;  
+            initialHandleScale = handle.localScale;      
             targetHandleScale = new Vector3(initialHandleScale.x * handleScaleFactor, initialHandleScale.y, initialHandleScale.z);
             StartCoroutine(PunchRoutine());
         }

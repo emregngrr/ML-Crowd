@@ -19,12 +19,10 @@ public class CrowdController : MonoBehaviour
 
     private void Awake()
     {
-        // ObjectPool'u bulma ve baþlatma iþlemini doðru yapalým
         objectPoolScript = FindObjectOfType<ObjectPool>();
 
         if (objectPoolScript != null)
         {
-            //objectPool = objectPoolScript.GetObjectPool();
             Debug.Log($"ObjectPool reference found. Pool size: {objectPool.Count}");
         }
         else
@@ -78,23 +76,6 @@ public class CrowdController : MonoBehaviour
             clone.SetActive(true);
         }
 
-        /*// Eðer havuz boþsa, hatayý logla
-        if (objectPool == null || objectPool.Count == 0)
-        {
-            Debug.LogError("Object pool is not initialized or is empty!");
-            return;
-        }
-
-        GameObject availableObj = objectPool.Find(obj => !obj.activeInHierarchy);
-        if (availableObj != null)
-        {
-            availableObj.SetActive(true);
-            availableObj.transform.position = transform.position;
-            availableObj.transform.rotation = Quaternion.identity;
-        }
-        else
-        {
-            Debug.LogWarning("No objects available in the pool!");
-        }*/
+        
     }
 }

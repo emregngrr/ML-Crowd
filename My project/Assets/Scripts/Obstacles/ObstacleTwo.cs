@@ -5,8 +5,8 @@ using UnityEngine;
 public class ObstacleTwo : MonoBehaviour
 {
     public float rotationSpeed = 300f;
-    public float moveSpeed = 10f;        // Speed of the side-to-side movement
-    public float moveDistance = 10f;     // Distance to move from the starting point
+    public float moveSpeed = 10f;        
+    public float moveDistance = 10f;    
     public float moveDelay = 2f;
 
     private bool canMove = false;
