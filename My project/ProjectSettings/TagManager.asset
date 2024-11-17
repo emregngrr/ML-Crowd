@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Obstacle
+  - PushingStageObject
+  - Clone
   layers:
   - Default
   - TransparentFX

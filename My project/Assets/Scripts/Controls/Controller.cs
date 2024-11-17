@@ -24,10 +24,10 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>(); 
         if (rb == null)
         {
-            Debug.LogError("Rigidbody bileþeni eklenmedi! Lütfen eklediðinizden emin olun.");
+            Debug.LogError("Rigidbody bileþeni eklenmedi!");
         }
 
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void Update()
@@ -86,7 +86,7 @@ public class Controller : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false; 
-        animator.SetTrigger("Jump"); 
+        //animator.SetTrigger("Jump"); 
     }
 
     bool IsSwipeUp()

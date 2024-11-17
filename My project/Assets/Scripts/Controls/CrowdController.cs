@@ -9,7 +9,10 @@ public class CrowdController : MonoBehaviour
     public int Gap = 10;
 
     public GameObject objectPrefab;
+    public GameObject player;
+    private Vector3 playerLocation;
     public int poolSize = 30;
+
     private List<GameObject> objectPool = new List<GameObject>();
 
     public static List<GameObject> Clones = new List<GameObject>();
@@ -19,6 +22,7 @@ public class CrowdController : MonoBehaviour
 
     private void Awake()
     {
+        
         objectPoolScript = FindObjectOfType<ObjectPool>();
 
         if (objectPoolScript != null)
@@ -33,6 +37,33 @@ public class CrowdController : MonoBehaviour
 
     void Update()
     {
+        playerLocation = player.transform.position;
+
+        transform.position += Vector3.forward * MoveSpeed * Time.deltaTime;
+
+        int index = 0;
+        foreach (var clone in Clones)
+        {
+            int row = index / 3;      
+            int column = index % 3;  
+
+            Vector3 offset = new Vector3((column - 1) * 2, 0, (row + 1) * 2); 
+            Vector3 targetPosition = playerLocation + offset;
+
+            Vector3 moveDirection = targetPosition - clone.transform.position;
+            clone.transform.position += moveDirection * CloneSpeed * Time.deltaTime;
+
+            clone.transform.rotation = Quaternion.identity;
+
+            index++;
+        }
+    }
+
+
+    /*void Update()
+    {
+        playerLocation = player.transform.position;
+
         transform.position += Vector3.forward * MoveSpeed * Time.deltaTime;
 
         PositionsHistory.Insert(0, transform.position);
@@ -64,9 +95,9 @@ public class CrowdController : MonoBehaviour
 
             index++;
         }
-    }
+    }*/
 
-    public void AddClone()
+    /*public void AddClone()
     {
 
         GameObject clone = ObjectPool.instance.GetPooledObject();
@@ -77,5 +108,31 @@ public class CrowdController : MonoBehaviour
         }
 
         
+    }*/
+    public void AddClone()
+    {
+        GameObject clone = ObjectPool.instance.GetPooledObject();
+
+        if (clone != null)
+        {
+            clone.SetActive(true);
+
+            int cloneIndex = Clones.Count; 
+            int row = cloneIndex / 3;     
+            int column = cloneIndex % 3;  
+
+            Vector3 offset = new Vector3((column - 1) * 2, 0, -row * 2); 
+            Vector3 spawnPosition = playerLocation + offset; 
+
+            clone.transform.position = spawnPosition;
+
+            clone.transform.rotation = Quaternion.identity;
+
+            Clones.Add(clone);
+        }
+        else
+        {
+            Debug.LogWarning("ObjectPool: No available objects to spawn!");
+        }
     }
 }

@@ -42,7 +42,19 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
+    public int GetActiveCloneCount()
+    {
+        int activeCount = 0;
 
+        foreach (var clone in pooledObjects)
+        {
+            if (clone.activeSelf)
+            {
+                activeCount++;
+            }
+        }
 
-    
+        return activeCount;
+    }
+
 }
