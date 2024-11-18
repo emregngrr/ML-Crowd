@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RMTrigger : MonoBehaviour
 {
-    public GameObject pushingStage; 
+    public GameObject pushingStage;
+    
 
     private void OnCollisionEnter(Collision collision)
     {
