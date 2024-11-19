@@ -120,10 +120,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 3.919357
+  m_Radius: 0.44499576
+  m_Height: 3.4698646
   m_Direction: 1
-  m_Center: {x: -0, y: 1.4596785, z: 0}
+  m_Center: {x: 0, y: 1.6949323, z: 0.05500424}
 --- !u!54 &8556029639991036190
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -163,5 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc235fb7d54fee499b06eb59ea888c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowdController: {fileID: 7812146286475878684, guid: 124f6787e2305b449a19903b9ac50151,
+    type: 3}
   gameController: {fileID: 5329065646481576576, guid: a3e783e4d1248c448a9f3e8156c5b1de,
     type: 3}

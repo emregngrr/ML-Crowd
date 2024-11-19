@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - PushingStageObject
   - Clone
+  - Enemy
+  - Cleaner
   layers:
   - Default
   - TransparentFX

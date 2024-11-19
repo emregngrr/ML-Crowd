@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-   public void playGame()
+    public GameObject primaryMenu;
+    public GameObject levelSelect;
+    public void playGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -15,7 +17,28 @@ public class MainMenu : MonoBehaviour
     }
     public void mainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Menu");
     }
-
+    public void tryagain1()
+    {
+        SceneManager.LoadScene("First Level");
+    }
+    public void tryagain2()
+    {
+        SceneManager.LoadScene("Second Level");
+    }
+    public void tryagain3()
+    {
+        SceneManager.LoadScene("Third Level");
+    }
+    public void levelselect()
+    {
+        primaryMenu.SetActive(false);
+        levelSelect.SetActive(true);
+    }
+    public void backMenu()
+    {
+        levelSelect.SetActive(false);
+        primaryMenu.SetActive(true);
+    }
 }

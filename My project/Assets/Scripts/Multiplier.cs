@@ -1,53 +1,57 @@
+using TMPro;
 using UnityEngine;
 
 public class Multiplier : MonoBehaviour
 {
-    public int characterCount = 1;
     public float minRandomValue = 2;
-    public float maxRandomValue = 3;
+    public float maxRandomValue = 5;
+    public int totalClones;
     public CrowdController crowdController;
 
     private int randomValue;
     private bool isMultiply;
-    private bool isPlus;
-    private int counter;
+    private bool isTriggered; 
+    private string symbol;
 
     void Start()
     {
         randomValue = Random.Range((int)minRandomValue, (int)maxRandomValue + 1);
         isMultiply = Random.value > 0.5f;
-        if (isMultiply)
-        {
-            Debug.Log("Çarpma iþlemi Seçildi");
-        }
-        else
-        {
-            Debug.Log("Toplama iþlemi Seçildi");
-            isPlus = true;
-        }
-        Debug.Log("Random Sayi=" + randomValue);
+        symbol = isMultiply ? "x" : "+";
+
+        this.GetComponentInChildren<TextMeshPro>().text = randomValue.ToString() + symbol;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        counter = 0;
+        
+        if (isTriggered) return;
+
+        if (!other.CompareTag("Player")) return;
+
+        isTriggered = true;
+
         if (isMultiply)
         {
-            while (counter < randomValue)
+            if (CrowdController.Clones.Count == 0)
             {
-                crowdController.AddClone();
-                counter++;
+                totalClones = randomValue - 1;
+            }
+            else
+            {
+                totalClones = (CrowdController.Clones.Count + 1) * randomValue;
             }
         }
-        else if (isPlus)
+        else
         {
-            while (counter < randomValue)
-            {
-                crowdController.AddClone();
-                counter++;
-            }
-
-            isPlus = false;
+            totalClones = CrowdController.Clones.Count + randomValue;
         }
+
+        while (CrowdController.Clones.Count < totalClones)
+        {
+            crowdController.AddClone();
+            CrowdController.instance.totalClone++;
+        }
+
     }
 }

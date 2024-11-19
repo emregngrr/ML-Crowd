@@ -13,6 +13,7 @@ public class SpikeyStick : MonoBehaviour
         {
             Debug.Log("Tag == Clone");
             collision.gameObject.SetActive(false);
+            CrowdController.instance.totalClone--;
         }
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -23,6 +24,7 @@ public class SpikeyStick : MonoBehaviour
             {
                 Debug.Log("Last Clone Has Been Eliminated");
                 collision.gameObject.SetActive(false);
+                CrowdController.instance.totalClone--;
                 GameController.instance.gameLost = true;
             }
         }

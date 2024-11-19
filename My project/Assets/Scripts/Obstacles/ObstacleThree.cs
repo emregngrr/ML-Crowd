@@ -16,7 +16,7 @@ public class ObstacleThree : MonoBehaviour
     private Vector3 initialHandleScale;
     private Vector3 targetHandleScale;
 
-    private bool isPunching = false; 
+    //private bool isPunching = false; 
 
     void Start()
     {

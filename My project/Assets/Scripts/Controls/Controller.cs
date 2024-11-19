@@ -114,6 +114,7 @@ public class Controller : MonoBehaviour
             if (!gameObject.CompareTag("Player"))
             {
                 gameObject.SetActive(false);
+                CrowdController.instance.totalClone--;
             }
         }
     }

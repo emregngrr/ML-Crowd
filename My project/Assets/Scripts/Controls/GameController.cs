@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -6,6 +8,9 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public bool lastClone;
     public bool gameLost=false;
+    public TextMeshProUGUI cloneCountText;
+    public Image menu;
+    public int tempScore;
 
     private void Awake()
     {
@@ -26,6 +31,9 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        cloneCountText.text = (CrowdController.instance.totalClone-1).ToString();
+        tempScore = CrowdController.instance.totalClone - 1;
+
         if (objectPool != null)
         {
             int activeClones = objectPool.GetActiveCloneCount();
@@ -42,7 +50,7 @@ public class GameController : MonoBehaviour
 
             if (gameLost == true)
             {
-                Debug.Log("Game is lost.");
+                menu.gameObject.SetActive(true);
             }
         }
        
