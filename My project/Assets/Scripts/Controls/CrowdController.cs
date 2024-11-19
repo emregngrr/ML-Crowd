@@ -19,10 +19,15 @@ public class CrowdController : MonoBehaviour
     private List<Vector3> PositionsHistory = new List<Vector3>();
 
     private ObjectPool objectPoolScript;
+    public static CrowdController instance;
 
     private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         objectPoolScript = FindObjectOfType<ObjectPool>();
 
         if (objectPoolScript != null)

@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 4777228851966100914}
   m_Layer: 0
   m_Name: Obstacle-2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b365727f975bf0246b1f168cc8fd9b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 5329065646481576576, guid: a3e783e4d1248c448a9f3e8156c5b1de,
+    type: 3}
   rotationSpeed: 150
   moveSpeed: 10
   moveDistance: 10

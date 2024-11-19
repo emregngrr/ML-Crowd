@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour
     private ObjectPool objectPool;
     public static GameController instance;
     public bool lastClone;
+    public bool gameLost=false;
 
     private void Awake()
     {
@@ -36,6 +37,12 @@ public class GameController : MonoBehaviour
             else 
             { 
                 lastClone= false;
+            }
+
+
+            if (gameLost == true)
+            {
+                Debug.Log("Game is lost.");
             }
         }
        

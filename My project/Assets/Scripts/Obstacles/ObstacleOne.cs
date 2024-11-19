@@ -10,4 +10,5 @@ public class ObstacleOne : MonoBehaviour
     {
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
     }
+
 }

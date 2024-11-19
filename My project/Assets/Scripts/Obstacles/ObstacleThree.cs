@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleThree : MonoBehaviour
 {
+
     public Transform handle;           
     public Transform punch;            
     public float punchDistance = 2f;   

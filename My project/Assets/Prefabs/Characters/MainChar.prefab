@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sideMoveSpeed: 5
   runningSpeed: 5
-  jumpForce: 10
+  jumpForce: 3
 --- !u!136 &5856259685313946008
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -174,8 +174,9 @@ MonoBehaviour:
   SteerSpeed: 180
   CloneSpeed: 5
   Gap: 10
-  objectPrefab: {fileID: 0}
-  player: {fileID: 0}
+  objectPrefab: {fileID: 4767559043441945255, guid: b31e8dfb1eac2f247b971684f7c6724f,
+    type: 3}
+  player: {fileID: 3958724880447959816}
   poolSize: 30
 --- !u!54 &5699638235677810269
 Rigidbody:
